@@ -2,7 +2,15 @@
 declare -A loginsummary
 SERVER_NAME=$1
 AUTH_FILE=$2
-LDAP_ACCTS=`ldapsearch -h 10.88.126.150 -x -D "cn=root,dc=synnex,dc=org"  -b "ou=${SERVER_NAME},ou=proftpd servers,dc=synnex,dc=org"  -LLL -w 'passwd' |grep uid|grep -v ^dn | grep -v ^uidNumber |awk -F: '{print $2}'|sed 's/^\s*\|\s*$//g'`
+if [ $# != 2 ] ; then
+     echo "USAGE: $0 server authfile"
+     echo " e.g.: $0 ftp.synnex.com us_auth.log"
+     echo "Server can be : ftp.synnex.com ftp2.synnex.com ftp3.synnex.com local-ftp.synnex.com caftp.synnex.com"
+     exit 1;
+fi
+
+read -p "Input the passwd of LDAP server: " -s ldappasswd
+LDAP_ACCTS=`ldapsearch -h 10.88.126.150 -x -D "cn=root,dc=synnex,dc=org"  -b "ou=${SERVER_NAME},ou=proftpd servers,dc=synnex,dc=org"  -LLL -w "${ldappasswd}" |grep uid|grep -v ^dn | grep -v ^uidNumber |awk -F: '{print $2}'|sed 's/^\s*\|\s*$//g'`
 >${SERVER_NAME}_loginsummary.csv
 >${SERVER_NAME}_nologin.csv
 while read  line
