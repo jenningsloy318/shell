@@ -5,7 +5,7 @@ AUTH_FILE=$2
 if [ $# != 2 ] ; then
      echo "USAGE: $0 server authfile"
      echo " e.g.: $0 ftp.synnex.com us_auth.log"
-     echo "Server can be : ftp.synnex.com ftp2.synnex.com ftp3.synnex.com local-ftp.synnex.com caftp.synnex.com"
+     echo "Server can be : ftp.example.com ftp2.example.com ftp3.example.com local-ftp.example.com caftp.example.com"
      exit 1;
 fi
 
