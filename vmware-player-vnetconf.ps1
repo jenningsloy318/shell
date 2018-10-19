@@ -88,6 +88,25 @@ add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    hardware ethernet 0
 add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    fixed-address 192.168.59.143;"
 add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "}" 
 
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "host kube-master1 {"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    hardware ethernet 00:0C:29:6B:24:68;"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    fixed-address 192.168.59.201;"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "}" 
+
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "host kube-master2 {"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    hardware ethernet 00:0C:29:35:E3:F0;"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    fixed-address 192.168.59.202;"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "}" 
+
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "host kube-master3 {"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    hardware ethernet 00:0C:29:4A:25:A1;"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    fixed-address 192.168.59.203;"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "}" 
+
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "host kube-node1 {"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    hardware ethernet 00:0C:29:B7:52:E9;"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "    fixed-address 192.168.59.204;"
+add-content -Encoding ASCII -Path $VmnetdhcpConf -Value "}" 
 
 write-host "Start vmware dhcp and nat "
 & 'C:\Program Files (x86)\VMware\VMware Player\vnetlib.exe' -- start dhcp
