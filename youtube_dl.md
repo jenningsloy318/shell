@@ -14,7 +14,7 @@ youtube-dl  -f 22 --retries infinite --proxy http://proxy --no-check-certificate
 ```conf
 --proxy socks5://192.168.0.1:8080
 -f bestvideo+bestaudio
--co ~/Downloads/%(playlist)s/%(playlist_index)s-%(title)s.%(ext)s
+-co ~/Downloads/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s
 ```
 
 and then excute `youtube-dl ${youtube_playlist}` to download
